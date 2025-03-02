@@ -23,7 +23,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_marks == null) return default(double[]);
+                    if (_marks == null) return null;
                     var NewArray = new double[_marks.Length];
                     Array.Copy(_marks, NewArray, _marks.Length);
                     return NewArray;
@@ -33,7 +33,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_places == null) return default(int[]);
+                    if (_places == null) return null;
                     var NewArray = new int[_places.Length];
                     Array.Copy(_places, NewArray, _places.Length);
                     return NewArray;
@@ -43,6 +43,7 @@ namespace Lab_6
             {
                 get
                 {
+                    if (_places == null) return 0;
                     return Places.Sum();
                 }
             }

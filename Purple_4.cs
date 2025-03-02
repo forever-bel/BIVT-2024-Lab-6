@@ -45,11 +45,11 @@ namespace Lab_6
             private Sportsman[] _sportsman;
 
             public string Name => _name;
-            public Sportsman[] Sportsman
+            public Sportsman[] Sportsmen
             {
                 get
                 {
-                    if (Sportsman == null) return null;
+                    if (_sportsman == null) return null;
                     var NewArray = new Sportsman[_sportsman.Length];
                     Array.Copy(_sportsman, NewArray, _sportsman.Length);
                     return NewArray;

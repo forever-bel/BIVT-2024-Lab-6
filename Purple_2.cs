@@ -24,7 +24,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_marks == null) return default(int[]);
+                    if (_marks == null) return null;
                     var NewArray = new int[_marks.Length];
                     Array.Copy(_marks, NewArray, _marks.Length);
                     return NewArray;
@@ -41,7 +41,11 @@ namespace Lab_6
                     var NewArray = new int[5];
                     Array.Copy(_marks, NewArray, _marks.Length);
                     Array.Sort(NewArray);
-                    _result = NewArray.Sum() - NewArray[0] - NewArray[4];
+                    _result = 0;
+                    for (int i = 1; i < 4; i++)
+                    {
+                        _result += NewArray[i];
+                    }
                     _result += 60 + 2 * (_distance - 120);
                     if (_result < 0) return 0;
                     return _result;
