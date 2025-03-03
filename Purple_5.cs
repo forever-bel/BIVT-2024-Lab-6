@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_6
 {
-    class Purple_5
+    public class Purple_5
     {
         public struct Response
         {
@@ -83,6 +83,7 @@ namespace Lab_6
 
             public void Add(string[] answers)
             {
+                if (answers == null) return;
                 var NewArray = new Response[_responses.Length + 1];
                 Array.Copy(_responses, NewArray, _responses.Length);
                 var Resp = new Response(answers[0], answers[1], answers[2]);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab_6
 {
-    class Purple_1
+    public class Purple_1
     {
         public struct Participant
         {

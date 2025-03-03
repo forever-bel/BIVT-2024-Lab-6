@@ -9,7 +9,7 @@ using static Lab_6.Purple_4;
 
 namespace Lab_6
 {
-    class Purple_4
+    public class Purple_4
     {
         public struct Sportsman
         {
@@ -45,16 +45,7 @@ namespace Lab_6
             private Sportsman[] _sportsman;
 
             public string Name => _name;
-            public Sportsman[] Sportsmen
-            {
-                get
-                {
-                    if (_sportsman == null) return null;
-                    var NewArray = new Sportsman[_sportsman.Length];
-                    Array.Copy(_sportsman, NewArray, _sportsman.Length);
-                    return NewArray;
-                }
-            }
+            public Sportsman[] Sportsmen => _sportsman;
 
             public Group(string name)
             {
@@ -80,28 +71,21 @@ namespace Lab_6
 
             public void Add(Sportsman[] array)
             {
-                var NewArray = new Sportsman[_sportsman.Length + array.Length];
-                Array.Copy(_sportsman, NewArray, _sportsman.Length);
-                for (int i = 0; i < array.Length; i++)
+                if (array == null) return;
+                foreach (var s in array)
                 {
-                    NewArray[i + _sportsman.Length] = array[i];
+                    Add(s);
                 }
-                _sportsman = NewArray;
             }
 
             public void Add(Group group)
             {
-                var NewArray = new Sportsman[_sportsman.Length + group._sportsman.Length];
-                Array.Copy(_sportsman, NewArray, _sportsman.Length);
-                for (int i = 0; i < group._sportsman.Length; i++)
-                {
-                    NewArray[i + _sportsman.Length] = group._sportsman[i];
-                }
-                _sportsman = NewArray;
+                Add(group._sportsman);
             }
 
             public void Sort()
             {
+                if (_sportsman == null) return;
                 for (int i = 0; i < _sportsman.Length; i++)
                 {
                     for (int j = 0; j < _sportsman.Length - i - 1; j++)

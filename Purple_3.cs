@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab_6
 {
-    class Purple_3
+    public class Purple_3
     {
         public struct Participant
         {
@@ -47,8 +47,22 @@ namespace Lab_6
                     return Places.Sum();
                 }
             }
-            public int TopPlace => _places.Min();
-            public double TotalMark => _marks.Sum();
+            private int TopPlace
+            {
+                get
+                {
+                    if (_places == null) return 0;
+                    return _places.Min();
+                }
+            }
+            private double TotalMark
+            {
+                get
+                {
+                    if (_marks == null) return 0;
+                    return _marks.Sum();
+                }
+            }
 
             public Participant(string name, string surname)
             {
@@ -72,6 +86,7 @@ namespace Lab_6
 
             public static void SetPlaces(Participant[] participants)
             {
+                if (participants == null) return;
                 for (int i = 0; i < 7; i++)
                 {
                     for (int k = 0; k < participants.Length; k++)
@@ -95,6 +110,7 @@ namespace Lab_6
 
             public static void Sort(Participant[] array)
             {
+                if (array == null) return;
                 for (int k = 0; k < array.Length; k++)
                 {
                     for (int j = 0; j < array.Length - 1 - k; j++)

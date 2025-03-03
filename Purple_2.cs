@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab_6
 {
-    class Purple_2
+    public class Purple_2
     {
         public struct Participant
         {
@@ -16,7 +16,6 @@ namespace Lab_6
             private string _surname;
             private int _distance;
             private int[] _marks;
-            private int _result;
 
             public string Name => _name;
             public string Surname => _surname;
@@ -31,24 +30,20 @@ namespace Lab_6
                 }
             }
             public int Distance => _distance;
-            public double Result
+            public int Result
             {
                 get
                 {
-                    if (_result > 0) return _result;
-                    if (_result < 0) return 0;
                     if (_marks == null) return 0;
-                    var NewArray = new int[5];
-                    Array.Copy(_marks, NewArray, _marks.Length);
-                    Array.Sort(NewArray);
-                    _result = 0;
+                    Array.Sort(_marks);
+                    int res = 0;
                     for (int i = 1; i < 4; i++)
                     {
-                        _result += NewArray[i];
+                        res += _marks[i];
                     }
-                    _result += 60 + 2 * (_distance - 120);
-                    if (_result < 0) return 0;
-                    return _result;
+                    res += 60 + 2 * (_distance - 120);
+                    if (res < 0) return 0;
+                    return res;
                 }
             }
 
@@ -58,11 +53,11 @@ namespace Lab_6
                 _surname = surname;
                 _distance = 0;
                 _marks = new int[5];
-                _result = 0;
             }
 
             public void Jump(int distance, int[] marks)
             {
+                if (distance < 0 || marks == null) return;
                 _distance = distance;
                 for (int i = 0; i < 5; i++)
                 {
@@ -73,6 +68,7 @@ namespace Lab_6
 
             public static void Sort(Participant[] array)
             {
+                if (array == null) return;
                 for (int i = 0; i < array.Length; i++)
                 {
                     for (int j = 0; j < array.Length - i - 1; j++)
@@ -89,7 +85,7 @@ namespace Lab_6
 
             public void Print()
             {
-                Console.WriteLine(Name + " " + Surname + " " + Result);
+                Console.WriteLine(Name + " " + Surname + " " + Distance);
             }
         }
     }
