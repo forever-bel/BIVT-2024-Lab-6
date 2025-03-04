@@ -35,11 +35,13 @@ namespace Lab_6
                 get
                 {
                     if (_marks == null) return 0;
-                    Array.Sort(_marks);
+                    var NewArray = new int[_marks.Length];
+                    Array.Copy(_marks, NewArray, _marks.Length);
+                    Array.Sort(NewArray);
                     int res = 0;
                     for (int i = 1; i < 4; i++)
                     {
-                        res += _marks[i];
+                        res += NewArray[i];
                     }
                     res += 60 + 2 * (_distance - 120);
                     if (res < 0) return 0;
