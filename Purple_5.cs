@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,29 +84,31 @@ namespace Lab_6
 
             public string[] GetTopResponses(int question)
             {
-                for (int k = 0; k < _responses.Length; k++)
+                var NewArray = new Response[_responses.Length];
+                Array.Copy(_responses, NewArray, _responses.Length);
+                for (int k = 0; k < NewArray.Length; k++)
                 {
-                    for (int j = 0; j < _responses.Length - k - 1; j++)
+                    for (int j = 0; j < NewArray.Length - k - 1; j++)
                     {
-                        if (_responses[j].CountVotes(_responses, question) < _responses[j + 1].CountVotes(_responses, question))
+                        if (NewArray[j].CountVotes(NewArray, question) < NewArray[j + 1].CountVotes(NewArray, question))
                         {
-                            var p = _responses[j];
-                            _responses[j] = _responses[j + 1];
-                            _responses[j + 1] = p;
+                            var p = NewArray[j];
+                            NewArray[j] = NewArray[j + 1];
+                            NewArray[j + 1] = p;
                         }
                     }
                 }
 
-                string[] Array = new string[5];
+                string[] Arr = new string[5];
                 int i = 0;
-                foreach (Response r in _responses)
+                foreach (Response r in NewArray)
                 {
-                    if (question == 1 && Array.Count(a => a == r.Animal) == 0) Array[i++] = r.Animal;
-                    if (question == 2 && Array.Count(a => a == r.CharacterTrait) == 0) Array[i++] = r.CharacterTrait;
-                    if (question == 3 && Array.Count(a => a == r.Concept) == 0) Array[i++] = r.Concept;
+                    if (question == 1 && Arr.Count(a => a == r.Animal) == 0 && r.Animal != null) Arr[i++] = r.Animal;
+                    if (question == 2 && Arr.Count(a => a == r.CharacterTrait) == 0 && r.CharacterTrait != null) Arr[i++] = r.CharacterTrait;
+                    if (question == 3 && Arr.Count(a => a == r.Concept) == 0 && r.Concept != null) Arr[i++] = r.Concept;
                     if (i == 5) break;
                 }
-                return Array;
+                return Arr;
             }
 
             public void Print()
