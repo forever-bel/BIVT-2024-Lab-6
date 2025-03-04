@@ -32,21 +32,21 @@ namespace Lab_6
                 {
                     foreach (Response r in responses)
                     {
-                        if (r._animal == _animal && _animal != " ") c++;
+                        if (r._animal == _animal && _animal != null) c++;
                     }
                 }
                 if (questionNumber == 2)
                 {
                     foreach (Response r in responses)
                     {
-                        if (r._CharacterTrait == _CharacterTrait && _CharacterTrait != " ") c++;
+                        if (r._CharacterTrait == _CharacterTrait && _CharacterTrait != null) c++;
                     }
                 }
                 if (questionNumber == 3)
                 {
                     foreach (Response r in responses)
                     {
-                        if (r._concept == _concept && _concept != " ") c++;
+                        if (r._concept == _concept && _concept != null) c++;
                     }
                 }
                 return c;
