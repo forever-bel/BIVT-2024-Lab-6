@@ -39,7 +39,7 @@ namespace Lab_6
                     return NewArray;
                 }
             }
-            public double Score
+            public int Score
             {
                 get
                 {
