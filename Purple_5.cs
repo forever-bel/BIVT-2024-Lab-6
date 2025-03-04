@@ -98,11 +98,7 @@ namespace Lab_6
                 }
 
                 string[] Array = new string[5];
-                if (question == 1) Array[0] = _responses[0].Animal;
-                if (question == 2) Array[0] = _responses[0].CharacterTrait;
-                if (question == 3) Array[0] = _responses[0].Concept;
-
-                int i = 1;
+                int i = 0;
                 foreach (Response r in _responses)
                 {
                     if (question == 1 && Array.Count(a => a == r.Animal) == 0) Array[i++] = r.Animal;
